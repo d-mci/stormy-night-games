@@ -32,8 +32,37 @@ void AMovableCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 }
 
-void AMovableCharacter::ClickedOnGridElement()
+void AMovableCharacter::MoveToTargetLocationUp(int up)
 {
+	//Should implement lerp, but for now set actor location is working
+	FVector location = GetActorLocation();
+	if (up != 0)
+	{
+		/*FVector destinyLocation = FMath::VInterpTo(location, FVector(location.X + (up * 400.f), location.Y, location.Z), GetWorld()->GetDeltaSeconds(), .5f);
+		SetActorLocation(destinyLocation);*/
 
+		//Works!!!
+		SetActorLocation(FVector(location.X + (up * 400.f), location.Y, location.Z));
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("Inside MoveToLocationUp"));
+}
+
+void AMovableCharacter::MoveToTargetLocationRight(int right)
+{
+	//Should implement lerp, but for now set actor location is working
+	FVector location = GetActorLocation();
+	
+	if (right != 0)
+	{
+		/*FVector destinyLocation = FMath::VInterpTo(location, FVector(location.X, location.Y + (right * 400.f), location.Z), GetWorld()->GetDeltaSeconds(), .5f);
+		
+		SetActorLocation(destinyLocation);*/
+
+		//Works!!!
+		SetActorLocation(FVector(location.X, location.Y + (right * 400.f), location.Z));
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("Inside MoveToLocationRight"));
 }
 

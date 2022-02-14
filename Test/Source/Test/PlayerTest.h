@@ -19,14 +19,28 @@ public:
 
 	UPROPERTY(VisibleAnywhere) AActor* TargetedGridElement = nullptr;
 	UPROPERTY(VisibleAnywhere) AActor* OriginGridElement = nullptr;
-	UPROPERTY(VisibleAnywhere) int GridElementsToMoveRight = 0;
 	UPROPERTY(VisibleAnywhere) int GridElementsToMoveUp = 0;
+	UPROPERTY(VisibleAnywhere) int GridElementsToMoveRight = 0;
+		
+	float gridSize = 0;
+
+	UPROPERTY(VisibleAnywhere) class USpringArmComponent* springArm = nullptr;
+
+	//Blueprint to select for the moveable character
+	UPROPERTY(EditAnywhere) TSubclassOf<AActor> moveableCharacter;
+
+	//Reference for the moveable character itself
+	UPROPERTY(VisibleAnywhere) class AActor* moveableCharacterRef;
+
+	UPROPERTY(EditAnywhere) class AGridMaker* gridMaker;
+
 
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	virtual void PostInitializeComponents() override;
 
 
 public:	
@@ -40,5 +54,7 @@ public:
 	void MoveRight(float value);
 	void SelectTargetGridElement();
 	void SelectCurrentGridElement();
-	void GenerateNodeArray();
+	void GenerateVector();
+	void RotateCameraRight();
+	void RotateCameraLeft();
 };
