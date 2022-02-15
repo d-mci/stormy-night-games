@@ -26,6 +26,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+
+	//Functions to make the character move according to how many tiles they have to move up or right
 	void MoveToTargetLocationUp(int up);
 	void MoveToTargetLocationRight(int right);
 

@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+	// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "MovableCharacter.h"
@@ -33,19 +33,18 @@ void AMovableCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 }
 
 void AMovableCharacter::MoveToTargetLocationUp(int up)
-{
-	//Should implement lerp, but for now set actor location is working
+{	
 	FVector location = GetActorLocation();
 	if (up != 0)
 	{
-		/*FVector destinyLocation = FMath::VInterpTo(location, FVector(location.X + (up * 400.f), location.Y, location.Z), GetWorld()->GetDeltaSeconds(), .5f);
-		SetActorLocation(destinyLocation);*/
+		//Lerping from current position to target position (up is the amount os squares to move up, and 400 is the size of the tile)
+		FVector destinyLocation = FMath::VInterpConstantTo(location, FVector(location.X + (up * 400.f), location.Y, location.Z), GetWorld()->GetDeltaSeconds(), 400.f);
+		SetActorLocation(destinyLocation);
 
-		//Works!!!
-		SetActorLocation(FVector(location.X + (up * 400.f), location.Y, location.Z));
+		//If VInterpConstantTo is not working, this works, it just teleports the character
+		//SetActorLocation(FVector(location.X + (up * 400.f), location.Y, location.Z));
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Inside MoveToLocationUp"));
 }
 
 void AMovableCharacter::MoveToTargetLocationRight(int right)
@@ -55,14 +54,14 @@ void AMovableCharacter::MoveToTargetLocationRight(int right)
 	
 	if (right != 0)
 	{
-		/*FVector destinyLocation = FMath::VInterpTo(location, FVector(location.X, location.Y + (right * 400.f), location.Z), GetWorld()->GetDeltaSeconds(), .5f);
+		//Lerping from current position to target position (right is the amount os squares to move right, and 400 is the size of the tile)
+		FVector destinyLocation = FMath::VInterpConstantTo(location, FVector(location.X, location.Y + (right * 400.f), location.Z), GetWorld()->GetDeltaSeconds(), 400.f);
 		
-		SetActorLocation(destinyLocation);*/
+		SetActorLocation(destinyLocation);
 
-		//Works!!!
-		SetActorLocation(FVector(location.X, location.Y + (right * 400.f), location.Z));
+		//If VInterpConstantTo is not working, this works, it just teleports the character
+		//SetActorLocation(FVector(location.X, location.Y + (right * 400.f), location.Z));
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Inside MoveToLocationRight"));
 }
 

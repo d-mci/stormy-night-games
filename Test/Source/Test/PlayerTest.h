@@ -15,33 +15,39 @@ public:
 	// Sets default values for this character's properties
 	APlayerTest();
 
+	//Reference for the Player Controller
 	UPROPERTY(VisibleAnywhere) APlayerController* PC = nullptr;
 
-	UPROPERTY(VisibleAnywhere) AActor* TargetedGridElement = nullptr;
-	UPROPERTY(VisibleAnywhere) AActor* OriginGridElement = nullptr;
+	//Reference for both the Targeted Grid Element and the Current/Origin grid element
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite) AActor* TargetedGridElement = nullptr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite) AActor* OriginGridElement = nullptr;
+
+	//Ints that multiplied by the size of the grid element will make the character move the right amount of units
 	UPROPERTY(VisibleAnywhere) int GridElementsToMoveUp = 0;
 	UPROPERTY(VisibleAnywhere) int GridElementsToMoveRight = 0;
 		
-	float gridSize = 0;
+	//float gridSize = 0; not in use
 
+	//Reference for the Spring arm that controlls the camera
 	UPROPERTY(VisibleAnywhere) class USpringArmComponent* springArm = nullptr;
 
 	//Blueprint to select for the moveable character
-	UPROPERTY(EditAnywhere) TSubclassOf<AActor> moveableCharacter;
+	UPROPERTY(EditAnywhere) TSubclassOf<AActor> movableCharacter;
 
 	//Reference for the moveable character itself
-	UPROPERTY(VisibleAnywhere) class AActor* moveableCharacterRef;
+	UPROPERTY(VisibleAnywhere) class AActor* movableCharacterRef;
 
+	//Reference for the Grid Maker in the scene, used to get the array of tiles in the scene
 	UPROPERTY(EditAnywhere) class AGridMaker* gridMaker;
 
+	//Does the character need to move right or up?
+	UPROPERTY(VisibleAnywhere)bool needsToMoveHorizontally = false;
+	UPROPERTY(VisibleAnywhere)bool needsToMoveVertically = false;
 
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	virtual void PostInitializeComponents() override;
-
 
 public:	
 	// Called every frame
@@ -50,11 +56,15 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	//Camera Movement Functions
 	void MoveForward(float value);
 	void MoveRight(float value);
-	void SelectTargetGridElement();
-	void SelectCurrentGridElement();
-	void GenerateVector();
 	void RotateCameraRight();
 	void RotateCameraLeft();
+
+	//Character Movement Functions
+	void SelectTargetGridElement();
+	void MoveCharacter();
+	//void SelectCurrentGridElement(); Not in use
+	
 };
