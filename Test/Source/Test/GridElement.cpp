@@ -9,17 +9,6 @@ AGridElement::AGridElement()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	enum TileTypes
-	{
-		Grass,
-		Water,
-		Mountain
-	};
-
-	//srand(time(0));
-
-	gridMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GridMesh"));
-	gridMesh->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -29,6 +18,15 @@ void AGridElement::BeginPlay()
 
 	
 }
+
+
+void AGridElement::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+
+}
+
+
 
 // Called every frame
 void AGridElement::Tick(float DeltaTime)

@@ -18,16 +18,21 @@ public:
 	//Grid Properties
 	UPROPERTY(EditAnywhere, Category = "Grid Size") int width;
 	UPROPERTY(EditAnywhere, Category = "Grid Size") int height;
-	UPROPERTY(EditAnywhere, Category = "Grid Size") float spacing = 150.f;
+	UPROPERTY(EditAnywhere, Category = "Grid Size") float spacing = 400.f;
 
+	UPROPERTY(EditAnywhere, Category = "Grid Element") TArray<AActor*> gridArray;
+	UPROPERTY(EditAnywhere, Category = "Grid Element") AActor* currentGridElement;
+	UPROPERTY(EditAnywhere, Category = "Grid Element") TSubclassOf<AActor> grassGridElement;
+	UPROPERTY(EditAnywhere, Category = "Grid Element") TSubclassOf<AActor> waterGridElement;
+	UPROPERTY(EditAnywhere, Category = "Grid Element") TSubclassOf<AActor> mountainGridElement;
 
-
-	UPROPERTY(EditAnywhere, Category = "Grid Element") TSubclassOf<AActor> gridElement;
 
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	virtual void PostInitializeComponents() override;
 
 public:	
 	// Called every frame
