@@ -6,6 +6,7 @@
 #include "Math/Vector.h"
 #include "MovableCharacter.h"
 #include "GridMaker.h"
+#include "GridElement.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Math/UnrealMathUtility.h"
@@ -42,7 +43,7 @@ void APlayerTest::BeginPlay()
 		gridMaker = Cast<AGridMaker>(arr[0]);
 	}
 
-	//Origin point of the vector used in the GenerateVector function starts as the first grid element
+	//Origin point of the vector used in the MoveCharacter function starts as the first grid element
 	if (gridMaker != nullptr)
 	{
 		OriginGridElement = gridMaker->currentGridElement;
@@ -76,7 +77,7 @@ void APlayerTest::Tick(float DeltaTime)
 	if (movableCharacterRef != nullptr && TargetedGridElement != nullptr)
 	{
 		//If the character is in the position of the targeted tile in the Y axis( ~200 values are the center of the tile)
-		if (movableCharacterRef->GetActorLocation().Y > TargetedGridElement->GetActorLocation().Y + 197.f && movableCharacterRef->GetActorLocation().Y < TargetedGridElement->GetActorLocation().Y + 203.f)
+		if (movableCharacterRef->GetActorLocation().Y > TargetedGridElement->GetActorLocation().Y + 190.f && movableCharacterRef->GetActorLocation().Y < TargetedGridElement->GetActorLocation().Y + 220.f && needsToMoveHorizontally)
 		{
 			//Stop moving in the Y axis and start moving in the X axis
 			needsToMoveHorizontally = false;
@@ -84,7 +85,7 @@ void APlayerTest::Tick(float DeltaTime)
 		}
 
 		//If the character is in the position of the targeted tile in the X axis( ~200 values are the center of the tile)
-		if (movableCharacterRef->GetActorLocation().X > TargetedGridElement->GetActorLocation().X + 197.f && movableCharacterRef->GetActorLocation().X < TargetedGridElement->GetActorLocation().X + 203.f)
+		if (movableCharacterRef->GetActorLocation().X > TargetedGridElement->GetActorLocation().X + 180.f && movableCharacterRef->GetActorLocation().X < TargetedGridElement->GetActorLocation().X + 220.f && needsToMoveVertically)
 		{
 			//Movement is complete, and resetting variables
 			needsToMoveVertically = false;
@@ -92,6 +93,18 @@ void APlayerTest::Tick(float DeltaTime)
 			TargetedGridElement = nullptr;
 			GridElementsToMoveRight = 0;
 			GridElementsToMoveUp = 0;	
+		}
+	}
+
+	if (TargetedGridElement == nullptr)
+	{
+		if (arrowArray.Num() > 0)
+		{
+			for (int i = 0; i < arrowArray.Num(); i++)
+			{
+				if(arrowArray[i]->IsValidLowLevel())
+					arrowArray[i]->Destroy();
+			}
 		}
 	}
 }
@@ -129,34 +142,31 @@ void APlayerTest::MoveRight(float value)
 
 //Hit event to select the targeted element
 void APlayerTest::SelectTargetGridElement()
-{
+{	
 	FHitResult Hit;
 	if (PC != nullptr)
 	{
 		PC->GetHitResultUnderCursor(ECC_Pawn, false, Hit);
 		if (Hit.bBlockingHit) 
 		{
-			TargetedGridElement = Hit.GetActor();
+			if (!needsToMoveHorizontally && !needsToMoveVertically)
+			{
+				if (Hit.Actor->IsA(AGridElement::StaticClass()))
+				{
+					TargetedGridElement = Hit.GetActor();
+				}
+			}
 		}
-	}
-}
-
-//Not in use anymore, might be useful later
-/*void APlayerTest::SelectCurrentGridElement()
-{
-	FHitResult Hit;
-	if (PC != nullptr)
-	{
-		PC->GetHitResultUnderCursor(ECC_Pawn, false, Hit);
-		if (Hit.bBlockingHit)
+		if (arrowArray.Num() > 0)
 		{
-			OriginGridElement = Hit.GetActor();
+			for (int i = 0; i < arrowArray.Num(); i++)
+			{
+				if (arrowArray[i]->IsValidLowLevel())
+					arrowArray[i]->Destroy();
+			}
 		}
 	}
-}*/
 
-void APlayerTest::MoveCharacter()
-{
 	//Checking for nullptr's
 	if (TargetedGridElement != nullptr && OriginGridElement != nullptr)
 	{
@@ -177,6 +187,7 @@ void APlayerTest::MoveCharacter()
 		//X axis
 		if (XDist != 0)
 		{
+			//The size of the grid element is 400
 			GridElementsToMoveUp = XDist / 400;
 		}
 		else
@@ -187,14 +198,92 @@ void APlayerTest::MoveCharacter()
 		//Y axis
 		if (YDist != 0)
 		{
+			//The size of the grid element is 400
 			GridElementsToMoveRight = YDist / 400;
 		}
-		
+
 		else
 		{
 			GridElementsToMoveRight = 0;
 		}
 	}
+
+	//Math to spawn the arrows pointing towards the target grid element. Spawn the arrows going left/right first
+	if (GridElementsToMoveRight != 0)
+	{
+		//for loop to go through every square on the Y axis, according to the GridElementsToMoveRight variable
+		for (int i = 0; i < FMath::Abs(GridElementsToMoveRight); i++)
+		{
+			//if the character is moving right
+			if(GridElementsToMoveRight > 0)
+				//In every loop, spawn an arrow pointing right on the grid element to the right
+				arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + 200.f, OriginGridElement->GetActorLocation().Y + (200.f + (i * 400.f)), OriginGridElement->GetActorLocation().Z), FRotator(0.f, 0.f, 0.f)));
+			//if the character is moving left
+			else
+				//In every loop, spawn an arrow pointing left on the grid element to the left
+				arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + 200.f, OriginGridElement->GetActorLocation().Y + (200.f - (i * 400.f)), OriginGridElement->GetActorLocation().Z), FRotator(0.f, 0.f, 180.f)));
+		}
+	}
+
+	//More math to spawn arrows pointing towards the target grid element. Spawn the arrows going up/down
+	if (GridElementsToMoveUp != 0)
+	{
+		//We need to take into account if the character is also moving right/left
+		if (GridElementsToMoveRight != 0)
+		{
+			//for loop to go through every grid element on the X axis, according to the GridElementsToMoveUp variable
+			for (int i = 0; i < FMath::Abs(GridElementsToMoveUp); i++)
+			{
+				//if the character is moving up
+				if (GridElementsToMoveUp > 0)
+					//In every loop, spawn an arrow pointing up on the grid element above
+					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + (200.f + (i * 400.f)), OriginGridElement->GetActorLocation().Y + 200.f + GridElementsToMoveRight * 400.f, OriginGridElement->GetActorLocation().Z), FRotator(0.f, -90.f, 0.f)));
+				//if the character is moving down
+				else
+					//In every loop, spawn an arrow pointing down on the grid element below
+					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + (200.f - (i * 400.f)), OriginGridElement->GetActorLocation().Y + 200.f + GridElementsToMoveRight * 400.f, OriginGridElement->GetActorLocation().Z), FRotator(0.f, 90.f, 0.f)));
+			}
+		}
+		//If the character is only moving on the X axis
+		else
+		{
+			//for loop to go through every grid element on the X axis, according to the GridElementsToMoveUp variable
+			for (int i = 0; i <= FMath::Abs(GridElementsToMoveUp) - 1 ; i++)
+			{
+				//if the character is moving up
+				if (GridElementsToMoveUp > 0)
+					//In every loop, spawn an arrow pointing up on the grid element above
+					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + (200.f + (i * 400.f)), OriginGridElement->GetActorLocation().Y + 200.f, OriginGridElement->GetActorLocation().Z), FRotator(0.f, -90.f, 0.f)));
+				//if the character is moving down
+				else
+					//In every loop, spawn an arrow pointing down on the grid element below
+					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + (200.f - (i * 400.f)), OriginGridElement->GetActorLocation().Y + 200.f, OriginGridElement->GetActorLocation().Z), FRotator(0.f, 90.f, 0.f)));
+			}
+		}
+	}
+}
+
+//Not in use anymore, might be useful later
+/*void APlayerTest::SelectCurrentGridElement()
+{
+	FHitResult Hit;
+	if (PC != nullptr)
+	{
+		PC->GetHitResultUnderCursor(ECC_Pawn, false, Hit);
+		if (Hit.bBlockingHit)
+		{
+			OriginGridElement = Hit.GetActor();
+		}
+	}
+}*/
+
+void APlayerTest::MoveCharacter()
+{
+	//Only do this if the character is not moving already
+	if (!needsToMoveHorizontally && !needsToMoveVertically)
+	{
+		
+	}	
 
 	//Logic to move the character horizontally first, and then vertically
 	if (GridElementsToMoveRight != 0)

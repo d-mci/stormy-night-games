@@ -2,6 +2,8 @@
 
 
 #include "GridElement.h"
+#include "PlayerTest.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AGridElement::AGridElement()
@@ -16,7 +18,12 @@ void AGridElement::BeginPlay()
 {
 	Super::BeginPlay();
 
-	
+	if (playerTest == nullptr)
+	{
+		TArray<AActor*>arr;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerTest::StaticClass(), arr);
+		playerTest = Cast<APlayerTest>(arr[0]);
+	}
 }
 
 
@@ -33,5 +40,13 @@ void AGridElement::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (playerTest != nullptr && playerTest->TargetedGridElement == this)
+	{
+		Cast<UStaticMeshComponent>(GetRootComponent())->SetRenderCustomDepth(true);
+	}
+	else
+	{
+		Cast<UStaticMeshComponent>(GetRootComponent())->SetRenderCustomDepth(false);
+	}
 }
 

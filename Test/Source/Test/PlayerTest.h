@@ -31,7 +31,7 @@ public:
 	//Reference for the Spring arm that controlls the camera
 	UPROPERTY(VisibleAnywhere) class USpringArmComponent* springArm = nullptr;
 
-	//Blueprint to select for the moveable character
+	//Blueprint to select for the movable character
 	UPROPERTY(EditAnywhere) TSubclassOf<AActor> movableCharacter;
 
 	//Reference for the moveable character itself
@@ -39,6 +39,12 @@ public:
 
 	//Reference for the Grid Maker in the scene, used to get the array of tiles in the scene
 	UPROPERTY(EditAnywhere) class AGridMaker* gridMaker;
+
+	//Blueprint to select for the arrows to be drawn for the pathing
+	UPROPERTY(EditAnywhere) TSubclassOf<AActor> arrow;
+
+	//Array of arrows to be deleted after moving or after selecting a new tile
+	TArray<AActor*> arrowArray;
 
 	//Does the character need to move right or up?
 	UPROPERTY(VisibleAnywhere)bool needsToMoveHorizontally = false;

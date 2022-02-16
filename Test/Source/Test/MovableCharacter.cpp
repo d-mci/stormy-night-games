@@ -38,7 +38,7 @@ void AMovableCharacter::MoveToTargetLocationUp(int up)
 	if (up != 0)
 	{
 		//Lerping from current position to target position (up is the amount os squares to move up, and 400 is the size of the tile)
-		FVector destinyLocation = FMath::VInterpConstantTo(location, FVector(location.X + (up * 400.f), location.Y, location.Z), GetWorld()->GetDeltaSeconds(), 400.f);
+		FVector destinyLocation = FMath::VInterpConstantTo(location, FVector(location.X + (up * 400.f), location.Y, location.Z), GetWorld()->GetDeltaSeconds(), 900.f);
 		SetActorLocation(destinyLocation);
 
 		//If VInterpConstantTo is not working, this works, it just teleports the character
@@ -55,7 +55,7 @@ void AMovableCharacter::MoveToTargetLocationRight(int right)
 	if (right != 0)
 	{
 		//Lerping from current position to target position (right is the amount os squares to move right, and 400 is the size of the tile)
-		FVector destinyLocation = FMath::VInterpConstantTo(location, FVector(location.X, location.Y + (right * 400.f), location.Z), GetWorld()->GetDeltaSeconds(), 400.f);
+		FVector destinyLocation = FMath::VInterpConstantTo(location, FVector(location.X, location.Y + (right * 400.f), location.Z), GetWorld()->GetDeltaSeconds(), 900.f);
 		
 		SetActorLocation(destinyLocation);
 

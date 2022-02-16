@@ -29,6 +29,9 @@ public:
 	//Tile types are below the class declaration
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) TEnumAsByte<TileTypes> tileType = Grass;
 
+	//Reference for the player
+	UPROPERTY(EditAnywhere) class APlayerTest* playerTest;
+
 	//Stat changes to be applied to characters on top of the tile
 	UPROPERTY(EditAnywhere, Category = "Stat Modifiers") float AttackMod = 0.f;
 	UPROPERTY(EditAnywhere, Category = "Stat Modifiers") float DefenseMod = 0.f;
