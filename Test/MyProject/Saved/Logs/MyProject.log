@@ -863,3 +863,5 @@ LogConfig: Setting CVar [[r.setres:1280x720]]
 [2022.03.02-12.14.33:391][692]LogEditorTransaction: Undo Scale Actors
 [2022.03.02-12.14.58:399][601]LogEditorViewport: Clicking on Actor (context menu): BP_Sky_Sphere_C (BP_Sky_Sphere)
 [2022.03.02-12.14.59:289][701]LogEditorViewport: Clicking on Actor (LMB): BP_Sky_Sphere_C (BP_Sky_Sphere)
+[2022.03.02-12.19.00:605][245]LogActorFactory: Actor Factory created Cube
+[2022.03.02-12.19.01:131][296]LogActorFactory: Actor Factory created Cube
