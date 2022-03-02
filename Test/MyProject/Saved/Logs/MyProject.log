@@ -865,3 +865,7 @@ LogConfig: Setting CVar [[r.setres:1280x720]]
 [2022.03.02-12.14.59:289][701]LogEditorViewport: Clicking on Actor (LMB): BP_Sky_Sphere_C (BP_Sky_Sphere)
 [2022.03.02-12.19.00:605][245]LogActorFactory: Actor Factory created Cube
 [2022.03.02-12.19.01:131][296]LogActorFactory: Actor Factory created Cube
+[2022.03.02-12.20.01:853][759]LogActorFactory: Actor Factory created Cube
+[2022.03.02-12.20.02:740][849]LogActorFactory: Actor Factory created Cube
+[2022.03.02-12.20.03:584][933]LogActorFactory: Actor Factory created Sphere
+[2022.03.02-12.20.04:190][994]LogActorFactory: Actor Factory created Sphere
