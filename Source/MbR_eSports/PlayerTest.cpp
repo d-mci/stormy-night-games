@@ -28,10 +28,10 @@ void APlayerTest::BeginPlay()
 	Super::BeginPlay();
 
 
-
 	if (!PC)
 	{
-		PC = Cast<AMyPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+		//PC = Cast<AMyPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+		PC = Cast<AMyPlayerController>(GetController());
 	}
 	//Enabling Mouse over and click events
 	//PC = Cast<AMyPlayerController>(GetController());
@@ -40,6 +40,7 @@ void APlayerTest::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Empty PC"));
 	}
+
 	if (PC)
 	{
 		PC->bShowMouseCursor = true;
@@ -68,7 +69,7 @@ void APlayerTest::BeginPlay()
 
 	if (movableCharacter != nullptr && movableCharacterRef == nullptr && OriginGridElement)
 	{
-		movableCharacterRef = GetWorld()->SpawnActor<AActor>(movableCharacter, FVector(OriginGridElement->GetActorLocation().X + 200.f, OriginGridElement->GetActorLocation().Y + 200.f, OriginGridElement->GetActorLocation().Z), OriginGridElement->GetActorRotation());
+		movableCharacterRef = GetWorld()->SpawnActor<AActor>(movableCharacter, FVector(OriginGridElement->GetActorLocation().X, OriginGridElement->GetActorLocation().Y, OriginGridElement->GetActorLocation().Z), OriginGridElement->GetActorRotation());
 		movableCharacterRef->SetOwner(GetController());
 	}
 }
@@ -101,7 +102,7 @@ void APlayerTest::Tick(float DeltaTime)
 	if (movableCharacterRef != nullptr && TargetedGridElement != nullptr)
 	{
 		//If the character is in the position of the targeted tile in the Y axis( ~200 values are the center of the tile)
-		if (movableCharacterRef->GetActorLocation().Y > TargetedGridElement->GetActorLocation().Y + 190.f && movableCharacterRef->GetActorLocation().Y < TargetedGridElement->GetActorLocation().Y + 220.f && needsToMoveHorizontally)
+		if (movableCharacterRef->GetActorLocation().Y > TargetedGridElement->GetActorLocation().Y - 20.f && movableCharacterRef->GetActorLocation().Y < TargetedGridElement->GetActorLocation().Y + 20.f && needsToMoveHorizontally)
 		{
 			//Stop moving in the Y axis and start moving in the X axis
 			needsToMoveHorizontally = false;
@@ -109,7 +110,7 @@ void APlayerTest::Tick(float DeltaTime)
 		}
 
 		//If the character is in the position of the targeted tile in the X axis( ~200 values are the center of the tile)
-		if (movableCharacterRef->GetActorLocation().X > TargetedGridElement->GetActorLocation().X + 180.f && movableCharacterRef->GetActorLocation().X < TargetedGridElement->GetActorLocation().X + 220.f && needsToMoveVertically)
+		if (movableCharacterRef->GetActorLocation().X > TargetedGridElement->GetActorLocation().X - 20.f && movableCharacterRef->GetActorLocation().X < TargetedGridElement->GetActorLocation().X + 20.f && needsToMoveVertically)
 		{
 			//Movement is complete, and resetting variables
 			needsToMoveVertically = false;
@@ -240,8 +241,8 @@ void APlayerTest::SelectTargetGridElement()
 	{
 		//Making a vector between the position of the current grid and the target grid. 200 is half the grid size, will change later to nodes
 		FVector DistVector = UKismetMathLibrary::MakeVector(
-			((TargetedGridElement->GetActorLocation().X + 200) - (OriginGridElement->GetActorLocation().X + 200)),
-			((TargetedGridElement->GetActorLocation().Y + 200) - (OriginGridElement->GetActorLocation().Y + 200)),
+			((TargetedGridElement->GetActorLocation().X) - (OriginGridElement->GetActorLocation().X)),
+			((TargetedGridElement->GetActorLocation().Y) - (OriginGridElement->GetActorLocation().Y)),
 			((TargetedGridElement->GetActorLocation().Z) - (OriginGridElement->GetActorLocation().Z))
 		);
 
@@ -285,11 +286,11 @@ void APlayerTest::SelectTargetGridElement()
 			//if the character is moving right
 			if (GridElementsToMoveRight > 0)
 				//In every loop, spawn an arrow pointing right on the grid element to the right
-				arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + 200.f, OriginGridElement->GetActorLocation().Y + (200.f + (i * 400.f)), OriginGridElement->GetActorLocation().Z), FRotator(0.f, 0.f, 0.f)));
+				arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X, OriginGridElement->GetActorLocation().Y + ((i * 400.f)), OriginGridElement->GetActorLocation().Z + 40), FRotator(0.f, 0.f, 0.f)));
 			//if the character is moving left
 			else
 				//In every loop, spawn an arrow pointing left on the grid element to the left
-				arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + 200.f, OriginGridElement->GetActorLocation().Y + (200.f - (i * 400.f)), OriginGridElement->GetActorLocation().Z), FRotator(0.f, 0.f, 180.f)));
+				arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X, OriginGridElement->GetActorLocation().Y - ((i * 400.f)), OriginGridElement->GetActorLocation().Z + 40), FRotator(0.f, 0.f, 180.f)));
 		}
 	}
 
@@ -305,11 +306,11 @@ void APlayerTest::SelectTargetGridElement()
 				//if the character is moving up
 				if (GridElementsToMoveUp > 0)
 					//In every loop, spawn an arrow pointing up on the grid element above
-					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + (200.f + (i * 400.f)), OriginGridElement->GetActorLocation().Y + 200.f + GridElementsToMoveRight * 400.f, OriginGridElement->GetActorLocation().Z), FRotator(0.f, -90.f, 0.f)));
+					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + ((i * 400.f)), OriginGridElement->GetActorLocation().Y + GridElementsToMoveRight * 400.f, OriginGridElement->GetActorLocation().Z + 40), FRotator(0.f, -90.f, 0.f)));
 				//if the character is moving down
 				else
 					//In every loop, spawn an arrow pointing down on the grid element below
-					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + (200.f - (i * 400.f)), OriginGridElement->GetActorLocation().Y + 200.f + GridElementsToMoveRight * 400.f, OriginGridElement->GetActorLocation().Z), FRotator(0.f, 90.f, 0.f)));
+					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X -((i * 400.f)), OriginGridElement->GetActorLocation().Y + GridElementsToMoveRight * 400.f, OriginGridElement->GetActorLocation().Z + 40), FRotator(0.f, 90.f, 0.f)));
 			}
 		}
 		//If the character is only moving on the X axis
@@ -321,11 +322,11 @@ void APlayerTest::SelectTargetGridElement()
 				//if the character is moving up
 				if (GridElementsToMoveUp > 0)
 					//In every loop, spawn an arrow pointing up on the grid element above
-					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + (200.f + (i * 400.f)), OriginGridElement->GetActorLocation().Y + 200.f, OriginGridElement->GetActorLocation().Z), FRotator(0.f, -90.f, 0.f)));
+					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + ((i * 400.f)), OriginGridElement->GetActorLocation().Y, OriginGridElement->GetActorLocation().Z + 40), FRotator(0.f, -90.f, 0.f)));
 				//if the character is moving down
 				else
 					//In every loop, spawn an arrow pointing down on the grid element below
-					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X + (200.f - (i * 400.f)), OriginGridElement->GetActorLocation().Y + 200.f, OriginGridElement->GetActorLocation().Z), FRotator(0.f, 90.f, 0.f)));
+					arrowArray.Add(GetWorld()->SpawnActor<AActor>(arrow, FVector(OriginGridElement->GetActorLocation().X - ((i * 400.f)), OriginGridElement->GetActorLocation().Y, OriginGridElement->GetActorLocation().Z + 40), FRotator(0.f, 90.f, 0.f)));
 			}
 		}
 	}
@@ -343,6 +344,17 @@ void APlayerTest::SelectTargetGridElement()
 				gridElementsOnMovementArray.Add(gridMaker->gridArray[k]);
 			}
 		}
+	}
+
+
+	if (gridElementsOnMovementArray.Num() > 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Array is not empty"));
+	}
+
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Array is empty"));
 	}
 }
 
@@ -382,8 +394,12 @@ void APlayerTest::MoveCharacter()
 
 bool APlayerTest::CanTheCharacterMoveToTarget()
 {
+	
+
 	for (int i = 0; i < gridElementsOnMovementArray.Num(); i++)
 	{
+		
+
 		if (Cast<AGridElement>(gridElementsOnMovementArray[i])->traversable == false || Cast<AGridElement>(TargetedGridElement)->traversable == false)
 		{
 			return false;
