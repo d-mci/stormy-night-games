@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "MbR_eSports",
+			"Path": "E:\\MbR-eSports-Multiplayer-main (2)\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSports.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "MbR_eSportsEditor",
+			"Path": "E:\\MbR-eSports-Multiplayer-main (2)\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSportsEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
