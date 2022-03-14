@@ -74,3 +74,23 @@ void ATileGrid::BeginPlay()
 	
 }
 
+
+//int i = -range;
+//for (int x = currentxpos - range; x <= currentxpos + range; x++)
+//{
+//	if (i < 1)
+//	{
+//		for (int y = ypos - range - i; y <= ypos + range + i; y++) 
+//		{
+//			add tile(x, y);
+//		}
+//	}
+//	else
+//	{
+//		for (int y = ypos - range + i; y <= ypos + range - i; y++)
+//		{
+//			add tile (x, y);
+//		}
+//	}
+//	i++
+//}

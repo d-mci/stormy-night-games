@@ -28,7 +28,7 @@ public:
 	// Sets default values for this actor's properties
 	ATile();
 
-	UPROPERTY(VisibleInstanceOnly, Category = "TILE")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "TILE")
 		FIntPoint TileIndex;
 
 protected:
