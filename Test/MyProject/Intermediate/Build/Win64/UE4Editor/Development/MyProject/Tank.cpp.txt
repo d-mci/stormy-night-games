@@ -1,5 +1,0 @@
-C:\Users\1801648\Desktop\StormyGames2022\stormy-night-games\Test\MyProject\Intermediate\Build\Win64\UE4Editor\Development\MyProject\Definitions.MyProject.h
-C:\Users\1801648\Desktop\StormyGames2022\stormy-night-games\Test\MyProject\Source\MyProject\Tank.h
-C:\Users\1801648\Desktop\StormyGames2022\stormy-night-games\Test\MyProject\Source\MyProject\BaseClass.h
-C:\Users\1801648\Desktop\StormyGames2022\stormy-night-games\Test\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\BaseClass.generated.h
-C:\Users\1801648\Desktop\StormyGames2022\stormy-night-games\Test\MyProject\Intermediate\Build\Win64\UE4Editor\Inc\MyProject\Tank.generated.h
