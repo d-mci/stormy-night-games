@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "MbR_eSports",
+			"Path": "Z:\\University\\CMP208\\stormy-night-games\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSports.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "MbR_eSportsEditor",
+			"Path": "Z:\\University\\CMP208\\stormy-night-games\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSportsEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
