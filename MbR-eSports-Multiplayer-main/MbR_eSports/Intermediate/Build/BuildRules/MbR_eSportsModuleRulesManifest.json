@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"Z:\\University\\CMP208\\stormy-night-games\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSports\\MbR_eSports.Build.cs",
+		"Z:\\University\\CMP208\\stormy-night-games\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSports.Target.cs",
+		"Z:\\University\\CMP208\\stormy-night-games\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSportsEditor.Target.cs"
+	],
+	"EngineVersion": "4.26.2"
+}

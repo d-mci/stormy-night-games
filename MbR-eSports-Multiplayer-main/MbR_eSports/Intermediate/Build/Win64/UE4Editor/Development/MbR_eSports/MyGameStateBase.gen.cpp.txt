@@ -1,0 +1,12 @@
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Intermediate\Build\Win64\UE4Editor\Development\MbR_eSports\Definitions.MbR_eSports.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Source\MbR_eSports/MyGameStateBase.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/GameStateBase.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameStateBase.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Engine\Public\Net/UnrealNetwork.h
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Intermediate\Build\Win64\UE4Editor\Inc\MbR_eSports\MyGameStateBase.generated.h

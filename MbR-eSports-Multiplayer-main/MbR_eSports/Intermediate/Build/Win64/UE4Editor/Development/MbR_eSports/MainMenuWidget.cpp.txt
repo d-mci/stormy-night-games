@@ -1,0 +1,364 @@
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Intermediate\Build\Win64\UE4Editor\Development\MbR_eSports\Definitions.MbR_eSports.h
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Source\MbR_eSports\MainMenu\MainMenuWidget.h
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Source\MbR_eSports/ServerInfoStruct.h
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Intermediate\Build\Win64\UE4Editor\Inc\MbR_eSports\ServerInfoStruct.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Blueprint/UserWidget.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/SlateWrapperTypes.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\SlateWrapperTypes.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/Widget.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/Visual.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\Visual.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Slate/WidgetTransform.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\WidgetTransform.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Blueprint/WidgetNavigation.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\SlateCore\Public\Types/NavigationMetaData.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\WidgetNavigation.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\Widget.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/NamedSlotInterface.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\NamedSlotInterface.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Layout/Anchors.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Slate\Anchors.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Animation/WidgetAnimation.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneSequence.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneSignedObject.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneSignedObject.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneTrack.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneSection.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneFwd.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneSequenceID.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneSequenceID.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\KeyParams.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieScene.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneSpawnable.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneSpawnable.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneBinding.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneBinding.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieScenePossessable.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieScenePossessable.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneObjectBindingID.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneObjectBindingID.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneFrameMigration.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneFrameMigration.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneTimeController.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieScene.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Evaluation/Blending/MovieSceneBlendType.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneBlendType.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Evaluation/MovieSceneCompletionMode.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneCompletionMode.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Generators/MovieSceneEasingFunction.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneEasingFunction.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Evaluation/MovieSceneEvaluationCustomVersion.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneEntityBuilder.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneEntityIDs.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneEntitySystemTypes.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneEntityManager.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/InlineValue.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/StrongObjectPtr.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Evaluation/MovieScenePlayback.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Evaluation/MovieSceneSequenceTransform.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Core\Public\Algo/AllOf.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Evaluation\MovieSceneTimeTransform.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneTimeTransform.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Evaluation\MovieSceneTimeWarping.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneTimeWarping.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneSequenceTransform.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneEntityFactoryTypes.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneComponentTypeHandler.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneComponentTypeInfo.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneComponentDebug.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneComponentPtr.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Core\Public\Algo/AnyOf.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Core\Public\Algo/NoneOf.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Core\Public\Algo/Common.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneComponentRegistry.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneEntityFactory.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneEntityRange.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneEntitySystemTask.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/EntityAllocationIterator.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneComponentAccessors.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneSystemTaskDependencies.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneSequenceInstanceHandle.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\EntitySystem/MovieSceneEntitySystemDirectedGraph.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/GeneratedTypeName.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneSection.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Compilation/MovieSceneSegmentCompiler.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Evaluation/MovieSceneSegment.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/SequencerObjectVersion.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneSegment.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\MovieSceneTrackEvaluationField.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\MovieScene\Public\Evaluation/MovieSceneEvaluationTree.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneTrackEvaluationField.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneTrack.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\MovieScene\MovieSceneSequence.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Animation/WidgetAnimationBinding.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\WidgetAnimationBinding.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\WidgetAnimation.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Blueprint/WidgetBlueprintGeneratedClass.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Binding/DynamicPropertyPath.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\PropertyPath\Public\PropertyPathHelpers.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\PropertyPath\Public\PropertyTypeCompatibility.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\PropertyPath\PropertyPathHelpers.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\DynamicPropertyPath.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\WidgetBlueprintGeneratedClass.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\UserWidget.generated.h
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Source\MbR_eSports/MbRGameInstance.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Components/TextRenderComponent.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\TextRenderComponent.generated.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineSubsystem.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineSubsystemModule.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineSubsystemTypes.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineSubsystemNames.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineSubsystemPackage.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineDelegateMacros.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineSessionSettings.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineKeyValuePair.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineSubsystemPackage.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineSubsystemPackage.h
+Z:\Games\UE_4.26\Engine\Plugins\Online\OnlineSubsystem\Source\Public\Interfaces/OnlineSessionInterface.h
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Intermediate\Build\Win64\UE4Editor\Inc\MbR_eSports\MbRGameInstance.generated.h
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Intermediate\Build\Win64\UE4Editor\Inc\MbR_eSports\MainMenuWidget.generated.h
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Source\MbR_eSports\MainMenu\ServerSlotWidget.h
+Z:\University\CMP208\stormy-night-games\MbR-eSports-Multiplayer-main\MbR_eSports\Intermediate\Build\Win64\UE4Editor\Inc\MbR_eSports\ServerSlotWidget.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/WidgetSwitcher.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/PanelWidget.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/PanelSlot.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\PanelSlot.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\PanelWidget.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Layout/SWidgetSwitcher.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\WidgetSwitcher.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/Button.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/ContentWidget.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\ContentWidget.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\Button.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/ScrollBox.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Layout/SScrollBox.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\ScrollBox.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/EditableTextBox.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/TextWidgetTypes.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\TextWidgetTypes.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Text/ISlateEditableTextWidget.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\EditableTextBox.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/TextBlock.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\TextBlock.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/Slider.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\Slider.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\UMG\Public\Components/CheckBox.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UMG\CheckBox.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/CollisionProfile.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CollisionProfile.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\KismetSystemLibrary.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet\GameplayStatics.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Sound/DialogueTypes.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DialogueTypes.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet\GameplayStaticsTypes.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStaticsTypes.generated.h
+Z:\Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStatics.generated.h
+Z:\Games\UE_4.26\Engine\Source\Runtime/Core/Public/Windows/COMPointer.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\Unknwn.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\rpc.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\windows.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\sdkddkver.h
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\INCLUDE\excpt.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\windef.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\minwindef.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winnt.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\kernelspecs.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\basetsd.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\guiddef.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack4.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack4.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack4.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\apiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\ktmtypes.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winbase.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\apisetcconv.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\minwinbase.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\apiquery2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\processenv.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\fileapifromapp.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\fileapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\debugapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\utilapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\handleapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\errhandlingapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\fibersapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\namedpipeapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\profileapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\heapapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\ioapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\synchapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\interlockedapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\processthreadsapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\sysinfoapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\memoryapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\enclaveapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\threadpoollegacyapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\threadpoolapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\jobapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\jobapi2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\wow64apiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\libloaderapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\securitybaseapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\namespaceapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\systemtopologyapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\processtopologyapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\securityappcontainer.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\realtimeapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\winerror.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\timezoneapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\wingdi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack4.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack4.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winuser.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\tvout.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winnls.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\datetimeapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\stringapiset.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winnls.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\wincon.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\wincontypes.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\consoleapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\consoleapi2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\consoleapi3.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winver.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\verrsrc.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winreg.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\reason.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winnetwk.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\wnnc.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\cderr.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\dde.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\ddeml.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\dlgs.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\lzexpand.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmsystem.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmsyscom.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mciapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmsyscom.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmiscapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmsyscom.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmiscapi2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmsyscom.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\playsoundapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmsyscom.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmeapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmsyscom.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\timeapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmsyscom.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\joystickapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mmsyscom.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\nb30.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\rpc.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\rpcdce.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\rpcdcep.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\rpcnsi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\rpcnterr.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\rpcasync.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\shellapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winperf.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winsock.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\inaddr.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\wincrypt.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\bcrypt.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\ncrypt.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\dpapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winefs.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winscard.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\wtypes.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\rpcndr.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\rpcnsip.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\rpcsal.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\wtypesbase.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\guiddef.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winioctl.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack1.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\winsmcrd.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winspool.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\prsht.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\ole2.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\objbase.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\combaseapi.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\unknwnbase.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\objidlbase.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\guiddef.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\cguid.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\coml2api.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\objidl.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\unknwn.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\propidlbase.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\oaidl.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\urlmon.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\oleidl.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\servprov.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\msxml.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\propidl.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\oleauto.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\pshpack8.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\poppack.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\commdlg.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\prsht.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared\stralign.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\winsvc.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\mcx.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\imm.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um\ime_cmodes.h
