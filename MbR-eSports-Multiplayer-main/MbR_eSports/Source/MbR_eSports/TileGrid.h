@@ -50,6 +50,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Grid")
 		TSubclassOf<ATile> TallGrassTile;
 
+	UPROPERTY(EditAnywhere, Category = "Grid")
+		TSubclassOf<ATile> BaseTile;
+
 	//0 grass
 	//1 water
 	//2 cliffs

@@ -16,7 +16,8 @@ enum class ETileType : uint8
 	WATER,
 	CLIFF,
 	FOREST,
-	TALLGRASS
+	TALLGRASS,
+	BASE
 };
 
 UCLASS()

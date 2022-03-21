@@ -52,6 +52,7 @@ void ATileGrid::BeginPlay()
 				TileToSpawn = TallGrassTile;
 				break;
 			case 5:
+				TileToSpawn = BaseTile;
 				break;
 			case 6:
 				break;
