@@ -1,0 +1,8 @@
+Project file not found: C:/Users/Callum/Desktop/stormy-night-games-joao/stormy-night-games-joao/MbR-eSports-Multiplayer-main.uproject
+	Attempting to find via project info helper.
+Found projects:
+Not using cached read wrapper
+Failed to open descriptor file ../../../../../../Users/Callum/Desktop/stormy-night-games-joao/stormy-night-games-joao/MbR-eSports-Multiplayer-main.uproject
+Message dialog closed, result: Ok, title: Message, text: Failed to open descriptor file ../../../../../../Users/Callum/Desktop/stormy-night-games-joao/stormy-night-games-joao/MbR-eSports-Multiplayer-main.uproject
+Could not find a valid project file, the engine will exit now.
+Engine exit requested (reason: EngineExit() was called)
