@@ -68,6 +68,8 @@ void ATileGrid::BeginPlay()
 
 			//spawn tile
 			ATile* newTile = GetWorld()->SpawnActor<ATile>(TileToSpawn, FVector(FIntPoint(xpos, ypos)), FRotator::ZeroRotator);
+			newTile->SetActorScale3D(FVector(2, 2, 2));
+			newTile->SetActorRelativeScale3D(FVector(2, 2, 2));
 			newTile->TileIndex = FIntPoint(x, y);
 			HexGrid2D[x][y] = newTile;
 		}
