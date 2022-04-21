@@ -25,7 +25,7 @@ void AMbRPlayerState::BeginPlay()
 {
     if (GetWorld()->GetMapName() != "MainMenu")
     {
-        CreateChatWidget();
+       // CreateChatWidget();
     }
 }
 

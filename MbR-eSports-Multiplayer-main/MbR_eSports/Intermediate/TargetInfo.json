@@ -2,12 +2,12 @@
 	"Targets": [
 		{
 			"Name": "MbR_eSports",
-			"Path": "C:\\Users\\Callum\\Desktop\\stormy-night-games-joao\\stormy-night-games-joao\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSports.Target.cs",
+			"Path": "E:\\Projects\\Unreal Engine\\Stormy Night Games\\stormy-night-games\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSports.Target.cs",
 			"Type": "Game"
 		},
 		{
 			"Name": "MbR_eSportsEditor",
-			"Path": "C:\\Users\\Callum\\Desktop\\stormy-night-games-joao\\stormy-night-games-joao\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSportsEditor.Target.cs",
+			"Path": "E:\\Projects\\Unreal Engine\\Stormy Night Games\\stormy-night-games\\MbR-eSports-Multiplayer-main\\MbR_eSports\\Source\\MbR_eSportsEditor.Target.cs",
 			"Type": "Editor"
 		}
 	]
