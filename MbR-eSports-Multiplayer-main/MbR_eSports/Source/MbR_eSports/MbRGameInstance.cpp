@@ -5,14 +5,20 @@
 #include "Engine/World.h"
 #include "GameFramework/Character.h"
 #include "Components/TextRenderComponent.h"
+#include "Engine/Engine.h"
+#include "GameFramework/PlayerState.h"
 #include "OnlineSubsystem.h"
 #include "OnlineSessionSettings.h"
+#include "OnlineSubsystemNames.h"
 #include "OnlineSubsystemUtils.h"
+#include "Interfaces/OnlineSessionInterface.h"
+#include "Interfaces/OnlineSharingInterface.h"
+#include "Templates/SharedPointer.h"
 
 //Constructor to define default session name and the online subsystem
 UMbRGameInstance::UMbRGameInstance() 
 {
-	defaultSessionName = FName("MbR_Game Session");
+	defaultSessionName = FName("Custom Name");
 	onlineSubsystem = IOnlineSubsystem::Get();
 }
 
@@ -21,15 +27,32 @@ void UMbRGameInstance::Init()
 {
 	if (onlineSubsystem)
 	{
-		SessionInterface = onlineSubsystem->GetSessionInterface();
-		if (SessionInterface.IsValid())
+		friendInterface = onlineSubsystem->GetFriendsInterface();
+		FOnReadFriendsListComplete friendDelegate;
+		friendDelegate.BindUObject(this, &UMbRGameInstance::OnReadFriendsComplete);
+		if (friendInterface.IsValid())
 		{
-			SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UMbRGameInstance::OnCreateSessionComplete);
-			SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UMbRGameInstance::OnFindSessionsComplete);
-			//SessionInterface->OnFindFriendSessionCompleteDelegates.AddUObject(this, &UMbRGameInstance::OnFindFriendSessionComplete);
-			SessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UMbRGameInstance::OnJoinSessionComplete);
+			friendInterface->ReadFriendsList(0, friendListName, friendDelegate);
+		}
+
+		sessionInterface = onlineSubsystem->GetSessionInterface();
+		if (sessionInterface.IsValid())
+		{
+			sessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UMbRGameInstance::OnCreateSessionComplete);
+			sessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UMbRGameInstance::OnFindSessionsComplete);
+			sessionInterface->OnFindFriendSessionCompleteDelegates->AddUObject(this, &UMbRGameInstance::OnFindFriendSessionComplete);
+			sessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UMbRGameInstance::OnJoinSessionComplete);
+			sessionInterface->OnEndSessionCompleteDelegates.AddUObject(this, &UMbRGameInstance::OnEndSessionComplete);
 		}
 	}
+}
+
+void UMbRGameInstance::SetAssignables(FName lobbyMap, FName mainMenuMap, APlayerController* pController, UWorld* uWorld)
+{
+	lobbyMapName = lobbyMap;
+	mainMenuMapName = mainMenuMap;
+	playerController = pController;
+	world = uWorld;
 }
 
 //Create a server by passing custom server info through the custom server menu
@@ -41,7 +64,7 @@ void UMbRGameInstance::CreateServer(FPassedServerInfo passedServerInfo)
 
 	SessionSettings.bAllowJoinInProgress = true;
 	SessionSettings.bIsDedicated = false;
-	SessionSettings.bIsLANMatch = (IOnlineSubsystem::Get()->GetSubsystemName() == "NULL") ? true : false;
+	SessionSettings.bIsLANMatch = (onlineSubsystem->GetSubsystemName() == "NULL") ? true : false;
 	SessionSettings.bUsesPresence = true;
 	SessionSettings.bShouldAdvertise = true;
 	SessionSettings.NumPublicConnections = passedServerInfo.maxPlayers;
@@ -54,7 +77,12 @@ void UMbRGameInstance::CreateServer(FPassedServerInfo passedServerInfo)
 		defaultSessionName = FName(passedServerInfo.serverName);
 	}
 
-	SessionInterface->CreateSession(0, defaultSessionName, SessionSettings);
+	if (sessionInterface->GetNamedSession(defaultSessionName) != nullptr)
+	{
+		sessionInterface->DestroySession(defaultSessionName);
+	}
+
+	sessionInterface->CreateSession(0, defaultSessionName, SessionSettings);
 }
 
 //Find servers function, called when server list is opened or the refresh button in the menu is clicked
@@ -64,41 +92,48 @@ void UMbRGameInstance::FindServers()
 
 	UE_LOG(LogTemp, Warning, TEXT("Find Server"));
 
-	SessionSearch = MakeShareable(new FOnlineSessionSearch());
-	SessionSearch->bIsLanQuery = (IOnlineSubsystem::Get()->GetSubsystemName() == "NULL") ? true : false;
-	SessionSearch->MaxSearchResults = 9999;
-	SessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
+	sessionSearch = MakeShareable(new FOnlineSessionSearch());
+	sessionSearch->bIsLanQuery = (IOnlineSubsystem::Get()->GetSubsystemName() == "NULL") ? true : false;
+	sessionSearch->MaxSearchResults = 9999;
+	sessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
 
-	SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
+	sessionInterface->FindSessions(0, sessionSearch.ToSharedRef());
 }
 
 //Find friends servers function, called when friends server list is opened or the refresh button in the menu is clicked
 void UMbRGameInstance::FindServersOfFriends()
 {
     UE_LOG(LogTemp, Warning, TEXT("Find Friends' Server"));
-    
-    SessionSearch = MakeShareable(new FOnlineSessionSearch());
-    SessionSearch->bIsLanQuery = (IOnlineSubsystem::Get()->GetSubsystemName() == "NULL") ? true : false;
-    SessionSearch->MaxSearchResults = 1000;
-    SessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
 
-    //SessionInterface->FindFriendSession(0, SessionSearch.ToSharedRef());
+    sessionSearch = MakeShareable(new FOnlineSessionSearch());
+    sessionSearch->bIsLanQuery = (IOnlineSubsystem::Get()->GetSubsystemName() == "NULL") ? true : false;
+    sessionSearch->MaxSearchResults = 9999;
+    sessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
+
+	if (onlineFriendList.Num() != 0)
+	{
+		for (TSharedRef<FOnlineFriend> onlineFriend : onlineFriendList)
+		{
+			sessionInterface->FindFriendSession(0, onlineFriend->GetUserId().Get());
+		}
+	}
 }
 
 //Join server according to the server slot, called when join button is clicked
 void UMbRGameInstance::JoinServer(int32 arrayIndex, FName joinSessionName)
 {
-	FOnlineSessionSearchResult result = SessionSearch->SearchResults[arrayIndex];
+	FOnlineSessionSearchResult result = sessionSearch->SearchResults[arrayIndex];
 	if (result.IsValid())
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Joining Server at Index: %d"), arrayIndex);
 		if (joinSessionName.ToString().IsEmpty())
 		{
-			SessionInterface->JoinSession(0, defaultSessionName, result);
+			sessionInterface->JoinSession(0, defaultSessionName, result);
 		}
 		else
 		{
-			SessionInterface->JoinSession(0, joinSessionName, result);
+			defaultSessionName = joinSessionName;
+			sessionInterface->JoinSession(0, defaultSessionName, result);
 		}
 	}
 	else
@@ -108,18 +143,33 @@ void UMbRGameInstance::JoinServer(int32 arrayIndex, FName joinSessionName)
 }
 
 /*
-Delegate function, called when a session creation is completed. Makes the server and the relevant client travel to the 
-DefaultTestMap. The map name is hard coded here, obviously, this should be changed accordingly and passed as a variable.
-The variable can be assigned in the child blueprint class
+Should end the server when the match is finished or when the host leaves the lobby/match
+Also called if the client tries to leave the server/session
 */
+void UMbRGameInstance::EndServer()
+{
+	endServerDel.Broadcast(true);
+}
+
+/*
+When the RPC ClientOnEndSession is called from the UI Manager -> this function gets called to end the session
+on each connected player
+*/
+void UMbRGameInstance::OnEndServer()
+{
+	sessionInterface->EndSession(defaultSessionName);
+}
+
+/*Delegate function, called when a session creation is completed. Makes the server and the relevant client travel to the 
+lobbyMap*/
 void UMbRGameInstance::OnCreateSessionComplete(FName serverName, bool successful)
 {
 	UE_LOG(LogTemp, Warning, TEXT("OnCreateSessionComplete, Succeeded: %d"), successful);
-	if (successful)
+	if (successful && !lobbyMapName.ToString().IsEmpty())
 	{
+		sessionInterface->StartSession(serverName);
 		serverCreation.Broadcast(successful);
-		UGameplayStatics::OpenLevel(GetWorld(), "NewMap", true, "listen");
-		GetFirstLocalPlayerController()->bBlockInput = true;
+		UGameplayStatics::OpenLevel(world, lobbyMapName, true, "listen");
 	}
 }
 
@@ -131,29 +181,40 @@ void UMbRGameInstance::OnFindSessionsComplete(bool successful)
 	UE_LOG(LogTemp, Warning, TEXT("OnFindSessionsComplete, Succeeded: %d"), successful);
 	if (successful)
 	{
-		OnAssignSearchResults();
-		UE_LOG(LogTemp, Warning, TEXT("SearchResults, Server Count: %d"), SessionSearch->SearchResults.Num());
+		OnAssignSearchResults(sessionSearch->SearchResults);
+		UE_LOG(LogTemp, Warning, TEXT("SearchResults, Server Count: %d"), sessionSearch->SearchResults.Num());
+	}
+}
+
+//Delegate function, called when friends' list read is completed
+void UMbRGameInstance::OnReadFriendsComplete(int32 localPlayer, bool successful, const FString& listName, const FString& errorStr)
+{
+	if (successful)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("OnReadFriendsComplete, Succeeded: %d"), successful);
+		friendInterface->GetFriendsList(localPlayer, listName, onlineFriendList);
 	}
 }
 
 //Delegate function, called when friends' sessions search is completed
-void UMbRGameInstance::OnFindFriendSessionComplete(bool successful)
+void UMbRGameInstance::OnFindFriendSessionComplete(int32 localPlayer, bool successful, const TArray<FOnlineSessionSearchResult>& sessionInfo)
 {
     searchingForServers.Broadcast(false);
 
 	UE_LOG(LogTemp, Warning, TEXT("OnFindFriendSessionsComplete, Succeeded: %d"), successful);
 	if (successful)
 	{
-		OnAssignSearchResults();
-		UE_LOG(LogTemp, Warning, TEXT("SearchResults, Server Count: %d"), SessionSearch->SearchResults.Num());
+		sessionSearch->SearchResults = sessionInfo;
+		OnAssignSearchResults(sessionInfo);
+		UE_LOG(LogTemp, Warning, TEXT("SearchResults, Server Count: %d"), sessionInfo.Num());
 	}
 }
 
 //Function called to assign search results upon completion of sessions search
-void UMbRGameInstance::OnAssignSearchResults()
+void UMbRGameInstance::OnAssignSearchResults(const TArray<FOnlineSessionSearchResult>& sessionInfo)
 {
 	int32 serverArrayIndex = 0;
-	for (FOnlineSessionSearchResult result : SessionSearch->SearchResults)
+	for (FOnlineSessionSearchResult result : sessionInfo)
 	{
 		if (!result.IsValid()) { continue; }
 
@@ -178,12 +239,12 @@ void UMbRGameInstance::OnAssignSearchResults()
 void UMbRGameInstance::OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result)
 {
 	UE_LOG(LogTemp, Warning, TEXT("OnJoinSessionsComplete, SessionName: %s"),*sessionName.ToString());
-	if (APlayerController* playerController = GetFirstLocalPlayerController())
+	if (playerController != nullptr)
 	{
-		if (!SessionInterface.IsValid()) { return; }
+		if (!sessionInterface.IsValid()) { return; }
 
 		FString joinAddress = "";
-		if (!SessionInterface->GetResolvedConnectString(sessionName, joinAddress))
+		if (!sessionInterface->GetResolvedConnectString(sessionName, joinAddress))
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Could not get connect string."));
 			return;
@@ -192,16 +253,22 @@ void UMbRGameInstance::OnJoinSessionComplete(FName sessionName, EOnJoinSessionCo
 		if (!joinAddress.IsEmpty())
 		{
 			playerController->ClientTravel(joinAddress, ETravelType::TRAVEL_Absolute);
+		}
+		sessionInterface->StartSession(sessionName);
+	}
+}
 
-			////set team, flip teamtoJoin for next player
-			//playerController->bTeam = teamToJoin;
-			//teamToJoin = !teamToJoin;
-
-			////if team is 0 then disable movement
-			////if (!playerController->bTeam)
-			//{
-				GetFirstLocalPlayerController()->bBlockInput = true;
-			//}
+//Delegate function, called when a session/server is ended after the match is over
+void UMbRGameInstance::OnEndSessionComplete(FName sessionName, bool successful)
+{
+	UE_LOG(LogTemp, Warning, TEXT("OnEndSessionComplete, Succeeded: %d"), successful);
+	if(successful)
+	{
+		UGameplayStatics::OpenLevel(world, "MainMenu", successful);
+		if (world->IsServer())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Destroy Session"));
+			sessionInterface->DestroySession(sessionName);
 		}
 	}
 }

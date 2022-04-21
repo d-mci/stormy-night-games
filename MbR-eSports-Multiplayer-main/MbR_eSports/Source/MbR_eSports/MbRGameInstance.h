@@ -6,6 +6,7 @@
 #include "OnlineSubsystem.h"
 #include "OnlineSessionSettings.h"
 #include "Interfaces/OnlineSessionInterface.h"
+#include "RPCActor.h"
 #include "MbRGameInstance.generated.h"
 
 /*
@@ -17,6 +18,7 @@ The variables and functions names are self explanatory.
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDelegateServer, FServerInfo, serversListDel);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDelegateCreation, bool, successful);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDelegateServerSearching, bool, searchingForServers);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDelegateEndServer, bool, successful);
 
 UCLASS()
 class MBR_ESPORTS_API UMbRGameInstance : public UGameInstance
@@ -27,37 +29,57 @@ public:
 	UMbRGameInstance();
 
 	UFUNCTION(BlueprintCallable)
+		void SetAssignables(FName lobbyMap, FName mainMenuMap, APlayerController* pController, UWorld* uWorld);
+	UFUNCTION(BlueprintCallable)
 		void CreateServer(FPassedServerInfo passedServerInfo);
 	UFUNCTION(BlueprintCallable)
 		void FindServers();		
 	UFUNCTION(BlueprintCallable)
 		void FindServersOfFriends();		
 	UFUNCTION(BlueprintCallable)
-		void JoinServer(int32 arrayIndex, FName joinSessionName);
+		void JoinServer(int32 arrayIndex, FName joinSessionName);	
+	UFUNCTION(BlueprintCallable)
+		void EndServer();
+	UFUNCTION(BlueprintCallable)
+		void OnEndServer();
+
 	UPROPERTY(BlueprintAssignable)
 		FDelegateServer serversListDel;	
 	UPROPERTY(BlueprintAssignable)
 		FDelegateCreation serverCreation;	
 	UPROPERTY(BlueprintAssignable)
 		FDelegateServerSearching searchingForServers;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool teamToJoin;
+	UPROPERTY(BlueprintAssignable)
+		FDelegateEndServer endServerDel;
 
 protected:
-	IOnlineSessionPtr SessionInterface;
-	TSharedPtr<FOnlineSessionSearch> SessionSearch;
+		IOnlineSessionPtr sessionInterface;
+		IOnlineFriendsPtr friendInterface;
+		TSharedPtr<FOnlineSessionSearch> sessionSearch;
 
-	virtual void Init() override;
-	virtual void OnCreateSessionComplete(FName sessionName, bool successful);
-	virtual void OnFindSessionsComplete(bool successful);
-	virtual void OnFindFriendSessionComplete(bool successful);
-	virtual void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result);
+		virtual void Init() override;
+		virtual void OnCreateSessionComplete(FName sessionName, bool successful);
+		virtual void OnFindSessionsComplete(bool successful);
+		virtual void OnReadFriendsComplete(int32 localPlayer, bool successful, const FString& listName, const FString& errorStr);
+		virtual void OnFindFriendSessionComplete(int32 localPlayer, bool successful, const TArray<FOnlineSessionSearchResult>& sessionInfo);
+		virtual void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result);
+		virtual void OnEndSessionComplete(FName sessionName, bool successful);
+		void OnAssignSearchResults(const TArray<FOnlineSessionSearchResult>& sessionInfo);
 
-	UFUNCTION()
-		void OnAssignSearchResults();
 	UPROPERTY()
 		FName defaultSessionName;
 
 private:
-	IOnlineSubsystem* onlineSubsystem;
+		IOnlineSubsystem* onlineSubsystem;
+		TArray<TSharedRef<FOnlineFriend>> onlineFriendList;
+	UPROPERTY()
+		APlayerController* playerController;
+	UPROPERTY()
+		UWorld* world;
+	UPROPERTY()
+		FName lobbyMapName;
+	UPROPERTY()
+		FName mainMenuMapName;
+	UPROPERTY()
+		FString friendListName;
 };
