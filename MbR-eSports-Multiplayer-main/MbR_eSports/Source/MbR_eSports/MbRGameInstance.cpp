@@ -13,6 +13,8 @@
 #include "OnlineSubsystemUtils.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "Interfaces/OnlineSharingInterface.h"
+#include "UObject/CoreOnline.h"
+#include "SocketSubsystem.h"
 #include "Templates/SharedPointer.h"
 
 //Constructor to define default session name and the online subsystem
@@ -44,9 +46,16 @@ void UMbRGameInstance::Init()
 			sessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UMbRGameInstance::OnJoinSessionComplete);
 			sessionInterface->OnEndSessionCompleteDelegates.AddUObject(this, &UMbRGameInstance::OnEndSessionComplete);
 		}
+
+		UEngine* uEngine = GetEngine();
+		if (uEngine)
+		{
+			uEngine->OnNetworkFailure().AddUObject(this, &UMbRGameInstance::HandleNetworkFailure);
+		}
 	}
 }
 
+//Function to Set Assignable variables -> Map Names, player Controller, world
 void UMbRGameInstance::SetAssignables(FName lobbyMap, FName mainMenuMap, APlayerController* pController, UWorld* uWorld)
 {
 	lobbyMapName = lobbyMap;
@@ -142,6 +151,12 @@ void UMbRGameInstance::JoinServer(int32 arrayIndex, FName joinSessionName)
 	}
 }
 
+//Register Player on the server
+void UMbRGameInstance::RegisterPlayer(FName sessionName, FUniqueNetIdRepl playerId, bool bWasInvited)
+{
+	sessionInterface->RegisterPlayer(defaultSessionName, *playerId.GetUniqueNetId().Get(), bWasInvited);
+}
+
 /*
 Should end the server when the match is finished or when the host leaves the lobby/match
 Also called if the client tries to leave the server/session
@@ -168,6 +183,7 @@ void UMbRGameInstance::OnCreateSessionComplete(FName serverName, bool successful
 	if (successful && !lobbyMapName.ToString().IsEmpty())
 	{
 		sessionInterface->StartSession(serverName);
+		RegisterPlayer(serverName, GetFirstGamePlayer()->GetPreferredUniqueNetId(), false);
 		serverCreation.Broadcast(successful);
 		UGameplayStatics::OpenLevel(world, lobbyMapName, true, "listen");
 	}
@@ -182,7 +198,6 @@ void UMbRGameInstance::OnFindSessionsComplete(bool successful)
 	if (successful)
 	{
 		OnAssignSearchResults(sessionSearch->SearchResults);
-		UE_LOG(LogTemp, Warning, TEXT("SearchResults, Server Count: %d"), sessionSearch->SearchResults.Num());
 	}
 }
 
@@ -227,7 +242,7 @@ void UMbRGameInstance::OnAssignSearchResults(const TArray<FOnlineSessionSearchRe
 		serverInfo.maxPlayers = result.Session.SessionSettings.NumPublicConnections;
 		serverInfo.currentPlayers = serverInfo.maxPlayers - result.Session.NumOpenPublicConnections;
 		serverInfo.isLan = result.Session.SessionSettings.bIsLANMatch;
-		serverInfo.ping = result.PingInMs;
+		serverInfo.ping = result.PingInMs; 
 		serverInfo.serverArrayIndex = serverArrayIndex;
 		serversListDel.Broadcast(serverInfo);
 
@@ -253,6 +268,7 @@ void UMbRGameInstance::OnJoinSessionComplete(FName sessionName, EOnJoinSessionCo
 		if (!joinAddress.IsEmpty())
 		{
 			playerController->ClientTravel(joinAddress, ETravelType::TRAVEL_Absolute);
+
 		}
 		sessionInterface->StartSession(sessionName);
 	}
@@ -270,5 +286,14 @@ void UMbRGameInstance::OnEndSessionComplete(FName sessionName, bool successful)
 			UE_LOG(LogTemp, Warning, TEXT("Destroy Session"));
 			sessionInterface->DestroySession(sessionName);
 		}
+	}
+}
+
+//Handle Network Failure when the host closes the game/press Alt-F4 
+void UMbRGameInstance::HandleNetworkFailure(UWorld* World, UNetDriver* NetDriver, ENetworkFailure::Type FailureType, const FString& ErrorString)
+{
+	if (FailureType == ENetworkFailure::ConnectionLost)
+	{
+		EndServer();
 	}
 }

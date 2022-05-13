@@ -6,8 +6,6 @@
 #include "GameFramework/HUD.h"
 #include "MbRGameInstance.h"
 #include "Net/UnrealNetwork.h"
-#include "MbRPlayerState.h"
-#include "RPCActor.h"
 #include "UIManager.generated.h"
 
 /**
@@ -30,8 +28,6 @@ protected:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "WidgetAssignment")
         TSubclassOf<UUserWidget> chatWidget;    
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "WidgetAssignment")
-        TSubclassOf<AActor> rpcActorClass;
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "WidgetAssignment")
         FString defaultGameMapName;    
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "WidgetAssignment")
         FString mainMenuMapName;
@@ -48,14 +44,10 @@ private:
         UUserWidget* mainMenuUserWidget;   
     UPROPERTY()   
         APlayerController* playerController;   
-    UPROPERTY()   
-        AMbRPlayerState* playerState;
     UPROPERTY() 
         UWorld* world;
     UPROPERTY()
         UMbRGameInstance* mbRGameInstance;
-    UPROPERTY()
-        ARPCActor* rPCActor;
     UPROPERTY()
         bool isInGameMenuUp;
 

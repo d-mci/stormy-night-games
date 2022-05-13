@@ -72,6 +72,6 @@ void AMbRPlayerState::SendMessageToAll_Implementation(const FString& message)
 
     if (chatWidget != nullptr)
     {
-        chatWidget->OnChatMessageTypedToAll(message);
+       
     }
 }

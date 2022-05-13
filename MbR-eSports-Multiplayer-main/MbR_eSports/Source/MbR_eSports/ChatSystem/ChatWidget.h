@@ -4,14 +4,22 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Blueprint/WidgetLayoutLibrary.h"
 #include "Components/EditableText.h"
+#include "Components/Border.h"
+#include "Widgets/SWidget.h"
+#include "Types/SlateEnums.h"
+#include "Net/UnrealNetwork.h"
+#include "SlateBasics.h"
 #include "ChatMessageWidget.h"
+#include "Containers/Array.h"
 #include "ChatWidget.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDelegateSendMessage, const FString&, message);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDelegateKickPlayerDel, bool, kickPlayerDel);
 
 /**
- * 
+ * Chat Widget responsible to creating chat box, binding variables and writing/adding chat messages
  */
 UCLASS()
 class MBR_ESPORTS_API UChatWidget : public UUserWidget
@@ -19,31 +27,67 @@ class MBR_ESPORTS_API UChatWidget : public UUserWidget
 	GENERATED_BODY()
 
 public :
+	virtual void NativeConstruct() override;
+
 	UPROPERTY(BlueprintAssignable)
 		FDelegateSendMessage messageSendDel;	
+	UPROPERTY(BlueprintAssignable)
+		FDelegateKickPlayerDel kickPlayerDel;
 
 	UFUNCTION(BlueprintCallable)
-		void OnChatMessageTyped();	
+		void SetPlayerName(FString name) { playerName = name; }
 	UFUNCTION(BlueprintCallable)
-		void OnChatMessageTypedToServer();
+		FString GetPlayerName() { return playerName; }
 	UFUNCTION(BlueprintCallable)
-		void OnChatMessageTypedToAll(const FString& chatMessage);
+		void UnHideChatWidget();
+	UFUNCTION(BlueprintCallable)
+		void AddTheChatMessageToChatBox(const FString& chatMessage);
 
 protected :
 	UPROPERTY(meta = (BindWidget))
 		class UScrollBox* chatMessagesScrollBox;
 	UPROPERTY(meta = (BindWidget))
-		class UEditableText* chatMessageTextBox;
+		class UEditableText* chatMessageTextBox;	
+	UPROPERTY(meta = (BindWidget))
+		class UBorder* chatWidgetBorder;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 		TSubclassOf<UUserWidget> chatMessageWidget;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		TArray<FString> toxicWords;
 
 	UFUNCTION(BlueprintCallable)
+		void SetKeyboardFocusOnText() { chatMessageTextBox->SetKeyboardFocus(); }
+	UFUNCTION(BlueprintCallable)
+		void OnChatMessageTyped(const FText& Text, const ETextCommit::Type CommitMethod);
+	UFUNCTION(BlueprintCallable)
+		bool CheckIfTextIsToxic(FString messageToCheck);
+	UFUNCTION(BlueprintCallable)
 		void SetMessageText(FText text) { chatMessageTextBox->SetText(text); }	
+	UFUNCTION(BlueprintCallable)
+		void HideChatWidget();
 
 private :
+	FTimerHandle timerHandle;
+
 	UPROPERTY()
-		float maxHeight = 370.0F;
+		UChatMessageWidget* chatTextWidget;
 	UPROPERTY()
-		float minHeight = 70.0F;
+		UCanvasPanelSlot* canvasPanelSlot;
+	UPROPERTY()
+		FString playerName;
+	UPROPERTY()
+		float chatHideDelay = 10.0F;
+	UPROPERTY()
+		float currentY = 0.0F;
+	UPROPERTY()
+		float currentX = 0.0F;
+	UPROPERTY()
+		float incrementInY = 40.0F;	
+	UPROPERTY()
+		float maxY = 370.0F;
+	UPROPERTY()
+		float minY = 130.0F;
+	UPROPERTY()
+		int toxicityCounter;
 
 };
